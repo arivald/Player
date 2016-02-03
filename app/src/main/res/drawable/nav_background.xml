@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/general_background" />
+
+    <item>
+        <bitmap
+            android:gravity="right|fill_vertical"
+            android:src="@drawable/side_nav_bar_line" />
+    </item>
+
+    <item android:top="@dimen/nav_header_height_half">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/musical_note_dim" />
+    </item>
+
+</layer-list>

@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.arivald.eventbus">
+
+    <application
+        android:allowBackup="true"
+        tools:ignore="AllowBackup">
+
+    </application>
+
+</manifest>
