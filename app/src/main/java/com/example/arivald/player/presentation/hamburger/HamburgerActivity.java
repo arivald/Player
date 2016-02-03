@@ -52,7 +52,6 @@ public class HamburgerActivity extends BaseActivity
 //    @Bind(R.id.nav_header_song_path)
 //    TextView navigationSongPath;
 //
-    
 //    @Bind(R.id.nav_header_mc_prior)
 //    TextView navigationPriorSong;
 //
