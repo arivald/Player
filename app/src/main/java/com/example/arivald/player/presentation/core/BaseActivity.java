@@ -24,23 +24,23 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @NonNull
     protected <T extends ViewModel> T getViewModel() {
-        if (mActivityInteractor instanceof InteractorWithViewModel) {
+        if (mActivityPresenter instanceof PresenterWithViewModel) {
             //noinspection unchecked
-            return (T) ((InteractorWithViewModel) mActivityInteractor).getViewModel();
+            return (T) ((PresenterWithViewModel) mActivityPresenter).getViewModel();
         }
-        throw new IllegalStateException("Interactor does not support ViewModel");
+        throw new IllegalStateException("Presenter does not support ViewModel");
     }
 
     /////////////////////////////////////////////////////////
     // to be overridden
 
     @NonNull
-    protected abstract ActivityInteractor createInteractor();
+    protected abstract ActivityPresenter createPresenter();
 
     /////////////////////////////////////////////////////////
     // implementation
 
-    protected ActivityInteractor mActivityInteractor;
+    protected ActivityPresenter mActivityPresenter;
 
 
     @Override
@@ -48,50 +48,50 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.getApplicationComponent().inject(this);
 
-        mActivityInteractor = createInteractor();
-        mActivityInteractor.onCreate(savedInstanceState);
+        mActivityPresenter = createPresenter();
+        mActivityPresenter.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mActivityInteractor.onStart();
+        mActivityPresenter.onStart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mActivityInteractor.onResume();
+        mActivityPresenter.onResume();
     }
 
     @Override
     protected void onPause() {
-        mActivityInteractor.onPause();
+        mActivityPresenter.onPause();
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        mActivityInteractor.onStop();
+        mActivityPresenter.onStop();
         super.onStop();
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        mActivityInteractor.onSaveInstanceState(outState);
+        mActivityPresenter.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (!mActivityInteractor.onActivityResult(requestCode, resultCode, data)) {
+        if (!mActivityPresenter.onActivityResult(requestCode, resultCode, data)) {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
     @Override
     public void onBackPressed() {
-        if (!mActivityInteractor.onBackPressed()) {
+        if (!mActivityPresenter.onBackPressed()) {
             super.onBackPressed();
         }
     }

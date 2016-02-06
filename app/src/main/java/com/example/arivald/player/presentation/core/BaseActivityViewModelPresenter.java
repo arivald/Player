@@ -1,22 +1,19 @@
 package com.example.arivald.player.presentation.core;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.example.arivald.player.domain.external_api.presentation.Interactor;
-
 /**
- * Base implementation of ActivityInteractor with View model.
+ * Base implementation of ActivityPresenter with View model.
  * <p/>
  * Created by Arivald on 2016-02-01.
  */
-public abstract class BaseActivityViewModelInteractor<VM extends ViewModel>
-        extends BaseActivityInteractor
-        implements InteractorWithViewModel<VM> {
+public abstract class BaseActivityViewModelPresenter<VM extends ViewModel>
+        extends BaseActivityPresenter
+        implements PresenterWithViewModel<VM> {
 
-    private static final String EXTRA_VIEW_MODEL = "BaseActivityViewModelInteractor.EXTRA_VIEW_MODEL";
+    private static final String EXTRA_VIEW_MODEL = "BaseActivityViewModelPresenter.EXTRA_VIEW_MODEL";
 
     /**
      * The VievModel field.

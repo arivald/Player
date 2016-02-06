@@ -5,8 +5,7 @@ import com.example.arivald.player.core.di.activity.ActivityModule;
 import com.example.arivald.player.core.di.activity.PerActivity;
 import com.example.arivald.player.core.di.application.ApplicationComponent;
 import com.example.arivald.player.presentation.hamburger.HamburgerActivity;
-import com.example.arivald.player.presentation.hamburger.HamburgerInteractor;
-import com.example.arivald.player.presentation.splash.SplashScreenActivity;
+import com.example.arivald.player.presentation.hamburger.HamburgerPresenter;
 
 import dagger.Component;
 
@@ -26,9 +25,9 @@ import dagger.Component;
 public interface HamburgerComponent extends ActivityComponent {
 
     HamburgerActivity inject(HamburgerActivity hamburgerActivity);
-    HamburgerInteractor inject(HamburgerInteractor hamburgerInteractor);
+    HamburgerPresenter inject(HamburgerPresenter hamburgerPresenter);
 
     //Exposed to sub-graphs.
 
-    HamburgerInteractor getHamburgerInteractor();
+    HamburgerPresenter getHamburgerPresenter();
 }

@@ -1,1 +1,1 @@
-include ':app', ':playbackservice', ':eventbus'
+include ':app', ':playbackservice', ':eventbus', ':databinding'

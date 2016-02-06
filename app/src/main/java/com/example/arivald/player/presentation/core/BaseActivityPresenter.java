@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.example.arivald.player.domain.external_api.presentation.Interactor;
+import com.example.arivald.player.domain.external_api.presentation.Presenter;
 
 /**
- * Base no-op implementation of ActivityInteractor.
+ * Base no-op implementation of ActivityPresenter.
  *
  * Created by Arivald on 2016-02-01.
  */
-public class BaseActivityInteractor implements Interactor, ActivityInteractor {
+public class BaseActivityPresenter implements Presenter, ActivityPresenter {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

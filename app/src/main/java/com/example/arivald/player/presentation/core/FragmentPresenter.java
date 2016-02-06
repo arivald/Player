@@ -6,11 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
- * Interface to be implemented by all interactors that binds to the Fragment.
+ * Interface to be implemented by all presenters that binds to the Fragment.
  *
  * Created by Arivald on 2016-01-28.
  */
-public interface FragmentInteractor {
+public interface FragmentPresenter {
 
     /**
      * Called from Fragment onCreate(savedInstanceState)
