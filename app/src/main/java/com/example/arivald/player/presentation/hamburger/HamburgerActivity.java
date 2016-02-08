@@ -32,6 +32,7 @@ public class HamburgerActivity extends BaseActivity
     HamburgerActivityBinding mBinding;
     HamburgerNavHeaderBinding mNavHeaderBinding;
 
+    ActionBarDrawerToggle mActionBarDrawerToggle;
 
 
     @NonNull
@@ -59,32 +60,23 @@ public class HamburgerActivity extends BaseActivity
 
         mNavHeaderBinding = DataBindingUtil.bind(mBinding.navigationView.getHeaderView(0));
         mNavHeaderBinding.setViewModel(this.<HamburgerViewModel>getViewModel());
+        mNavHeaderBinding.setPresenter(mHamburgerPresenter);
 
         setSupportActionBar(mBinding.toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(
                 this, mBinding.drawer, mBinding.toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mBinding.drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        mBinding.drawer.setDrawerListener(mActionBarDrawerToggle);
 
         mBinding.navigationView.setNavigationItemSelectedListener(this);
+    }
 
 
-        mNavHeaderBinding.navHeaderMcStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HamburgerViewModel vm = getViewModel();
-                vm.songName.setEnabled(false);
-            }
-        });
-        mNavHeaderBinding.navHeaderMcPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HamburgerViewModel vm = getViewModel();
-                vm.songName.setEnabled(true);
-            }
-        });
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mActionBarDrawerToggle.syncState();
     }
 
 

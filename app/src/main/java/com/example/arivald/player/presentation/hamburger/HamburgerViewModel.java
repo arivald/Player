@@ -5,6 +5,8 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import com.example.arivald.databinding.bindable.core.ParcelHelper;
+import com.example.arivald.databinding.bindable.other.DrawerLayoutBinding;
+import com.example.arivald.databinding.bindable.string.BindableNonNullString;
 import com.example.arivald.databinding.bindable.string.EditTextBinding;
 import com.example.arivald.player.presentation.core.ViewModel;
 
@@ -15,13 +17,15 @@ import com.example.arivald.player.presentation.core.ViewModel;
  */
 public class HamburgerViewModel implements ViewModel {
 
-    public final EditTextBinding songName = new EditTextBinding(null, "default value");
-    public final EditTextBinding songPath = new EditTextBinding("initial value");
+    public final BindableNonNullString songName = new BindableNonNullString();
+    public final BindableNonNullString songPath = new BindableNonNullString();
 
+    public final DrawerLayoutBinding drawerLayout = new DrawerLayoutBinding();
 
     final ParcelHelper parcelHelper = ParcelHelper.builder()
             .add(songName)
             .add(songPath)
+            .add(drawerLayout)
             .build();
 
 

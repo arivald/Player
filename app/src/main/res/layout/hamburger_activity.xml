@@ -9,6 +9,9 @@
         <variable
             name="viewModel"
             type="com.example.arivald.player.presentation.hamburger.HamburgerViewModel" />
+        <variable
+            name="presenter"
+            type="com.example.arivald.player.presentation.hamburger.HamburgerPresenter" />
     </data>
 
     <android.support.v4.widget.DrawerLayout
@@ -16,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="false"
+        app:binding="@{viewModel.drawerLayout}"
         tools:openDrawer="start">
 
         <LinearLayout
@@ -42,6 +46,9 @@
         </LinearLayout>
 
         <android.support.design.widget.NavigationView
+
+            android:layout_marginTop="100dp"
+
             android:id="@+id/navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

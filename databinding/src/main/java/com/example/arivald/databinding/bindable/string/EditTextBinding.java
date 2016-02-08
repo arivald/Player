@@ -17,12 +17,14 @@ import com.example.arivald.databinding.R;
 
 /**
  * Bindable String to use with EditText, also support the EditText.enabled property.
- *
+ * todo add builder
+ * <p/>
  * Created by Arivald on 2016-02-08.
  */
 public class EditTextBinding extends BindableNonNullString implements TextWatcher {
 
     protected boolean mEnabled = true;
+    protected String mError = "initial error";
 
     @Bindable
     public boolean getEnabled() {
@@ -30,10 +32,34 @@ public class EditTextBinding extends BindableNonNullString implements TextWatche
     }
 
     public void setEnabled(boolean value) {
-        mEnabled = value;
-        notifyChange();
+        if (mEnabled != value) {
+            mEnabled = value;
+            notifyChange();
+        }
     }
 
+    @Bindable
+    @NonNull
+    public String getError() {
+        return mError;
+    }
+
+    public void setError(@Nullable String error) {
+        if (error == null) {
+            error = "";
+        }
+        if (!TextUtils.equals(mError, error)) {
+            mError = error;
+            notifyChange();
+        }
+    }
+
+
+    @Override
+    public void set(@Nullable String s) {
+       setError(s);
+       super.set(s);
+    }
 
     public EditTextBinding() {
         super();
@@ -60,14 +86,6 @@ public class EditTextBinding extends BindableNonNullString implements TextWatche
     }
 
     /**
-     * Binding converter, will be used when this is bound to any other Boolean property, mapped to mEnabled.
-     */
-    @BindingConversion
-    public static boolean convertEditTextBindingToBoolean(@NonNull EditTextBinding editTextBinding) {
-        return editTextBinding.getEnabled();
-    }
-
-    /**
      * Binding adapter, will be used when this is bound to the custom "app:binding" property on EditText.
      */
     @BindingAdapter({"app:binding"})
@@ -86,4 +104,5 @@ public class EditTextBinding extends BindableNonNullString implements TextWatche
 
         view.setEnabled(editTextBinding.mEnabled);
     }
+
 }

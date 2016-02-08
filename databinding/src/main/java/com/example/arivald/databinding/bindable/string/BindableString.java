@@ -1,5 +1,6 @@
 package com.example.arivald.databinding.bindable.string;
 
+import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.adapters.ListenerUtil;
@@ -15,10 +16,10 @@ import com.example.arivald.databinding.R;
 import com.example.arivald.databinding.bindable.core.BaseBindable;
 
 /**
- * An Bindable that holds String, and can be bound to EditText as TextWatcher,
- * just use the "app:binding" attribute on EditText or its descendant.
- * Note that if You use "app:binding", there is no need to bind the "android:text", it will
- * be handled anyway.
+ * A Bindable that holds a String, and can be bound to the EditText as a TextWatcher,
+ * Just use the "app:binding" attribute on the EditText or its descendant.
+ * Note that if You use "app:binding", there is no need to bind the "android:text", "android:enabled",
+ * etc, all of them will be handled by the binding.
  *
  * Created by Arivald on 2016-02-06.
  */
@@ -29,6 +30,15 @@ public abstract class BindableString extends BaseBindable implements TextWatcher
     public abstract String get();
 
     public abstract void set(String value);
+
+    @Bindable
+    public String getValue() {
+        return get();
+    }
+
+    public void setValue(String value) {
+        set(value);
+    }
 
     public BindableString() {
         mValue = "";

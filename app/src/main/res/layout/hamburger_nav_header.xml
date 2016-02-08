@@ -9,6 +9,9 @@
         <variable
             name="viewModel"
             type="com.example.arivald.player.presentation.hamburger.HamburgerViewModel" />
+        <variable
+            name="presenter"
+            type="com.example.arivald.player.presentation.hamburger.HamburgerPresenter" />
     </data>
 
     <RelativeLayout
@@ -30,7 +33,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{viewModel.songName}"
+            android:text="@{viewModel.songName.value}"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -49,50 +52,36 @@
             android:textSize="12sp"
             tools:text="library one/artist/album/file name.mp3" />
 
-<EditText
-    android:id="@+id/vcdfvdfdsvr_song_path"
-    android:layout_width="250dp"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/nav_header_song_path"
-    android:ellipsize="middle"
-    app:binding="@{viewModel.songName}"
-    android:maxLines="1"
-    android:textColor="@color/white" />
-
-<CheckBox
-    android:id="@+id/check"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/nav_header_song_path"
-    android:layout_toRightOf="@+id/vcdfvdfdsvr_song_path"
-    android:checked="@{viewModel.songName.enabled}"/>
-
 
         <ImageButton
             android:id="@+id/nav_header_mc_prior"
             style="@style/nav_header_mc_button"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="0dp"
-            android:src="@android:drawable/ic_media_previous" />
+            android:src="@android:drawable/ic_media_previous"
+            app:onClick="@{presenter.onMcPriorClick}"/>
 
         <ImageButton
             android:id="@+id/nav_header_mc_play"
             style="@style/nav_header_mc_button"
             android:layout_toRightOf="@+id/nav_header_mc_prior"
-            android:src="@android:drawable/ic_media_play" />
+            android:src="@android:drawable/ic_media_play"
+            app:onClick="@{presenter.onMcPlayClick}" />
 
         <ImageButton
             android:id="@+id/nav_header_mc_next"
             style="@style/nav_header_mc_button"
             android:layout_toRightOf="@+id/nav_header_mc_play"
-            android:src="@android:drawable/ic_media_next" />
+            android:src="@android:drawable/ic_media_next"
+            app:onClick="@{presenter.onMcNextClick}" />
 
         <ImageButton
             android:id="@+id/nav_header_mc_stop"
             style="@style/nav_header_mc_button"
             android:layout_alignParentRight="true"
             android:layout_marginRight="0dp"
-            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:onClick="@{presenter.onMcStopClick}" />
 
 
     </RelativeLayout>
