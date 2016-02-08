@@ -49,6 +49,25 @@
             android:textSize="12sp"
             tools:text="library one/artist/album/file name.mp3" />
 
+<EditText
+    android:id="@+id/vcdfvdfdsvr_song_path"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/nav_header_song_path"
+    android:ellipsize="middle"
+    app:binding="@{viewModel.songName}"
+    android:maxLines="1"
+    android:textColor="@color/white" />
+
+<CheckBox
+    android:id="@+id/check"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/nav_header_song_path"
+    android:layout_toRightOf="@+id/vcdfvdfdsvr_song_path"
+    android:checked="@{viewModel.songName.enabled}"/>
+
+
         <ImageButton
             android:id="@+id/nav_header_mc_prior"
             style="@style/nav_header_mc_button"

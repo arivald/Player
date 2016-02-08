@@ -2,13 +2,14 @@ package com.example.arivald.databinding.bindable.string;
 
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
+import android.databinding.adapters.ListenerUtil;
 import android.os.Parcel;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.arivald.databinding.R;
 import com.example.arivald.databinding.bindable.core.BaseBindable;
@@ -67,26 +68,28 @@ public abstract class BindableString extends BaseBindable implements TextWatcher
     ///////////////////////////////////////////////////////////
     // databinding
 
+    /**
+     * Binding converter, will be used when this is bound to any other String property, like TextView:text.
+     */
     @BindingConversion
     public static String convertBindableStringToString(@NonNull BindableString bindableString) {
         return bindableString.get();
     }
 
+    /**
+     * Binding adapter, will be used when this is bound to the custom "app:binding" property on EditText.
+     */
     @BindingAdapter({"app:binding"})
     public static void bindEditText(@NonNull EditText view, @NonNull final BindableString bindableString) {
         //make sure this bindableString is registered as TextChangedListener
-        BindableString oldBindable = (BindableString) view.getTag(R.id.bound_bindable);
-        if (oldBindable != bindableString) {
-            if (oldBindable != null) {
-                view.removeTextChangedListener(oldBindable);
-            }
-
-            view.setTag(R.id.bound_bindable, bindableString);
-            view.addTextChangedListener(bindableString);
+        BindableString oldBindable = ListenerUtil.trackListener(view, bindableString, R.id.onTextChangedListener);
+        if (oldBindable != null) {
+            view.removeTextChangedListener(oldBindable);
         }
+        view.addTextChangedListener(bindableString);
 
         String newValue = bindableString.get();
-        if (!view.getText().toString().equals(newValue)) {
+        if (!TextUtils.equals(view.getText().toString(), newValue)) {
             view.setText(newValue);
         }
     }

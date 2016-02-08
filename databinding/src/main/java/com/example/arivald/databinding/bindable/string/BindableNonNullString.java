@@ -25,7 +25,7 @@ public class BindableNonNullString extends BindableString {
     public BindableNonNullString(@Nullable String initialValue, @Nullable String defaultValue) {
         super();
         mDefaultValue = defaultValue == null ? "" : defaultValue;
-        set(initialValue);
+        mValue = nonNull(initialValue);
     }
 
     @NonNull

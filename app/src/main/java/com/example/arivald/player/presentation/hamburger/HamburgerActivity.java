@@ -7,6 +7,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 
 import com.example.arivald.player.R;
 import com.example.arivald.player.databinding.HamburgerActivityBinding;
@@ -67,6 +69,22 @@ public class HamburgerActivity extends BaseActivity
         toggle.syncState();
 
         mBinding.navigationView.setNavigationItemSelectedListener(this);
+
+
+        mNavHeaderBinding.navHeaderMcStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HamburgerViewModel vm = getViewModel();
+                vm.songName.setEnabled(false);
+            }
+        });
+        mNavHeaderBinding.navHeaderMcPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HamburgerViewModel vm = getViewModel();
+                vm.songName.setEnabled(true);
+            }
+        });
     }
 
 

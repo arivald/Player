@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="bound_bindable" type="id" />
+
+    <item name="onTextChangedListener" type="id" />
+    <item name="onClickListener" type="id" />
+
 </resources>
