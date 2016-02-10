@@ -6,9 +6,12 @@
 
     <data>
 
+        <import type="com.example.arivald.player.R" />
+
         <variable
             name="viewModel"
             type="com.example.arivald.player.presentation.hamburger.HamburgerViewModel" />
+
         <variable
             name="presenter"
             type="com.example.arivald.player.presentation.hamburger.HamburgerPresenter" />
@@ -19,7 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="false"
-        app:binding="@{viewModel.drawerLayout}"
+        app:binding="@{viewModel.drawer}"
+        app:closeDrawerContentDesc="@{R.string.navigation_drawer_close}"
+        app:openDrawerContentDesc="@{R.string.navigation_drawer_open}"
+        app:toolbar="@{@id/toolbar}"
         tools:openDrawer="start">
 
         <LinearLayout
@@ -47,12 +53,12 @@
 
         <android.support.design.widget.NavigationView
 
-            android:layout_marginTop="100dp"
-
             android:id="@+id/navigation_view"
+
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:layout_marginTop="100dp"
             android:background="@drawable/nav_background"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/hamburger_nav_header"

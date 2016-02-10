@@ -4,4 +4,7 @@
     <item name="onTextChangedListener" type="id" />
     <item name="onClickListener" type="id" />
 
+    <item name="ActionBarDrawerToggle" type="id" />
+    <item name="DrawerLayout_DrawerListener" type="id" />
+
 </resources>

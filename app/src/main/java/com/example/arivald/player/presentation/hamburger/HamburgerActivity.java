@@ -7,8 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.CheckBox;
 
 import com.example.arivald.player.R;
 import com.example.arivald.player.databinding.HamburgerActivityBinding;
@@ -64,20 +62,10 @@ public class HamburgerActivity extends BaseActivity
 
         setSupportActionBar(mBinding.toolbar);
 
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(
-                this, mBinding.drawer, mBinding.toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        mBinding.drawer.setDrawerListener(mActionBarDrawerToggle);
-
+        //todo binding
         mBinding.navigationView.setNavigationItemSelectedListener(this);
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mActionBarDrawerToggle.syncState();
-    }
 
 
     @Override
